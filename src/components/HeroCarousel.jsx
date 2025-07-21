@@ -44,7 +44,7 @@ const HeroCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 5000);
+    }, 6000); // Increased from 5000ms to 6000ms for smoother experience
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -58,17 +58,15 @@ const HeroCarousel = () => {
         controls={true}
         indicators={true}
         interval={null}
+        className="smooth-carousel"
       >
         {slides.map((slide, idx) => (
-          <Carousel.Item key={idx}>
+          <Carousel.Item key={idx} className="smooth-item">
             <div 
               className="carousel-slide"
               style={{
                 backgroundImage: `url(${slide.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                height: '500px',
-                position: 'relative'
+                height: '500px'
               }}
             >
               <div className="carousel-overlay"></div>

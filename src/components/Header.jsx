@@ -17,9 +17,12 @@ const Header = ({ toggleSidebar, onLogout, isAuthenticated, onOpenLogin }) => {
             <img src="/indian-rail.png" alt="Indian Railways" className="header-logo compact-logo" />
           </Col>
           <Col xs={6} className="compact-title-section">
-            <h1 className="compact-site-title">
-              <span className="first-letter">S</span>afety <span className="first-letter">I</span>nformation <span className="first-letter">M</span>anagement <span className="first-letter">S</span>ystem
-            </h1>
+            <div className="title-wrapper">
+              <h1 className="compact-site-title">
+                <span className="first-letter">S</span>AFETY <span className="first-letter">I</span>NFORMATION <span className="first-letter">M</span>ANAGEMENT <span className="first-letter">S</span>YSTEM
+              </h1>
+              <p className="gov-subtitle">a digital initiative for enhancing safety in INDIAN RAILWAYS....</p>
+            </div>
           </Col>
           <Col xs={3} className="d-flex align-items-center justify-content-end">
             <img src="/cris_logo.png" alt="CRIS" className="header-logo compact-logo me-3" />
