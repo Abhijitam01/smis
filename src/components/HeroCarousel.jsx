@@ -50,7 +50,7 @@ const HeroCarousel = () => {
   }, [slides.length]);
 
   return (
-    <div className="fade-carousel">
+    <div className="hero-carousel">
       <Carousel 
         activeIndex={index} 
         onSelect={handleSelect}
@@ -60,25 +60,28 @@ const HeroCarousel = () => {
         interval={null}
       >
         {slides.map((slide, idx) => (
-          <Carousel.Item key={idx} className="slides">
+          <Carousel.Item key={idx}>
             <div 
-              className={`slide-${idx + 1}`}
+              className="carousel-slide"
               style={{
                 backgroundImage: `url(${slide.image})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '80vh',
+                height: '500px',
                 position: 'relative'
               }}
             >
-              <div className="carousel-banner">
-                <hgroup>
-                  <h1>{slide.title}</h1>
-                  <h3>{slide.subtitle}</h3>
-                  <h4>{slide.description}</h4>
-                </hgroup>
-                <button className="btn btn-carousel-banner">Learn More</button>
-                <button className="btn btn-carousel-banner">Get Started</button>
+              <div className="carousel-overlay"></div>
+              <div className="carousel-content">
+                <div className="carousel-text">
+                  <h2>{slide.title}</h2>
+                  <h4>{slide.subtitle}</h4>
+                  <p>{slide.description}</p>
+                  <div className="carousel-buttons">
+                    <button className="btn btn-primary">Learn More</button>
+                    <button className="btn btn-outline">Get Started</button>
+                  </div>
+                </div>
               </div>
             </div>
           </Carousel.Item>

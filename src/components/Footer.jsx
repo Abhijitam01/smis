@@ -14,28 +14,34 @@ const Footer = () => {
   ];
 
   return (
-    <footer>
+    <footer className="gov-footer">
       <Container>
         <Row>
-          <Col md={12}>
-            <div className="nav">
-              <div className="container">
-                <ul className="nav nav-pills nav-justified">
-                  {footerLinks.map((link, index) => (
-                    <li key={index}>
-                      <a href={link.href}>{link.name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <Col md={6}>
+            <div className="footer-info">
+              <h5>Safety Information Management System</h5>
+              <p>Centre for Railway Information Systems (CRIS)</p>
+              <p>Government of India</p>
+            </div>
+          </Col>
+          <Col md={6}>
+            <div className="footer-links">
+              <h6>Quick Links</h6>
+              <ul>
+                {footerLinks.map((link, index) => (
+                  <li key={index}>
+                    <a href={link.href}>{link.name}</a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Col>
         </Row>
-        <Row className="mt-3">
-          <Col md={12} className="text-center">
-            <p style={{ color: '#cbd5e0', fontSize: '14px' }}>
-              © 2024 Centre for Railway Information Systems (CRIS). All rights reserved.
-            </p>
+        <Row>
+          <Col>
+            <div className="footer-bottom">
+              <p>&copy; 2024 Centre for Railway Information Systems (CRIS). All rights reserved.</p>
+            </div>
           </Col>
         </Row>
       </Container>

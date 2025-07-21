@@ -1,30 +1,44 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
   return (
-    <div className="heading">
-      <Container>
+    <header className="gov-header">
+      <Container fluid>
         <Row className="align-items-center">
-          <Col md={2} id="railLogo">
-            <img src="/indian-rail.png" alt="Indian Railways Logo" />
+          <Col xs={1} className="menu-toggle-col">
+            <button 
+              className="menu-toggle-btn"
+              onClick={toggleSidebar}
+              aria-label="Toggle Menu"
+            >
+              <i className="fas fa-bars"></i>
+            </button>
           </Col>
-          <Col md={2} id="crisLogo">
-            <img src="/cris_logo.png" alt="CRIS Logo" />
+          
+          <Col xs={2} className="logo-col">
+            <img src="/indian-rail.png" alt="Indian Railways" className="header-logo" />
           </Col>
-          <Col md={4} className="site-name">
-            <h1>Safety Information Management System</h1>
-            <h4>Centre for Railway Information Systems</h4>
+          
+          <Col xs={2} className="logo-col">
+            <img src="/cris_logo.png" alt="CRIS" className="header-logo" />
           </Col>
-          <Col md={2} id="emblem">
-            <img src="/Emblem_of_India.png" alt="Government of India Emblem" />
+          
+          <Col xs={4} className="title-section">
+            <h1 className="site-title">Safety Information Management System</h1>
+            <p className="site-subtitle">Centre for Railway Information Systems</p>
           </Col>
-          <Col md={2}>
-            <img src="/logo1.png" alt="Additional Logo" />
+          
+          <Col xs={2} className="logo-col">
+            <img src="/Emblem_of_India.png" alt="Government of India" className="header-logo" />
+          </Col>
+          
+          <Col xs={1} className="logo-col">
+            <img src="/logo1.png" alt="Additional Logo" className="header-logo small-logo" />
           </Col>
         </Row>
       </Container>
-    </div>
+    </header>
   );
 };
 

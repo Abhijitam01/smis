@@ -13,7 +13,7 @@ const PartnerLogos = () => {
     { name: 'CRIS', logo: '/cris_logo.png' }
   ];
 
-  const visibleLogos = 3;
+  const visibleLogos = 4;
   const maxIndex = Math.max(0, partners.length - visibleLogos);
 
   const nextSlide = () => {
@@ -25,37 +25,41 @@ const PartnerLogos = () => {
   };
 
   return (
-    <div className="partner-logos-section">
-      <h3 className="content-title">Our Partners</h3>
-      <div className="logos-container">
-        <button className="slider-btn" onClick={prevSlide}>
+    <section className="partner-section">
+      <div className="section-header">
+        <h3>Our Partners</h3>
+        <div className="section-divider"></div>
+      </div>
+      
+      <div className="partner-carousel">
+        <button className="carousel-nav prev" onClick={prevSlide}>
           <i className="fas fa-chevron-left"></i>
         </button>
         
-        <div className="partner-logos-wrapper">
+        <div className="partner-container">
           <div 
-            className="partner-logos-track"
+            className="partner-track"
             style={{
               transform: `translateX(-${currentIndex * (100 / visibleLogos)}%)`
             }}
           >
             {partners.map((partner, index) => (
-              <div key={index} className="partner-logo-item">
+              <div key={index} className="partner-item">
                 <img 
                   src={partner.logo} 
                   alt={partner.name}
-                  className="partner-img"
+                  className="partner-logo"
                 />
               </div>
             ))}
           </div>
         </div>
         
-        <button className="slider-btn" onClick={nextSlide}>
+        <button className="carousel-nav next" onClick={nextSlide}>
           <i className="fas fa-chevron-right"></i>
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 
