@@ -1,33 +1,52 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import HeroCarousel from './components/HeroCarousel';
-import MainContent from './components/MainContent';
-import Footer from './components/Footer';
+import LoginPage from './pages/LoginPage';
+import Dashboard from './pages/Dashboard';
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+  const handleLogin = (credentials) => {
+    // Simple authentication logic - in real app, this would call an API
+    if (credentials.username === 'admin' && credentials.password === 'password') {
+      setIsAuthenticated(true);
+      return true;
+    }
+    return false;
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
   };
 
   return (
     <Router>
       <div className="App">
-        <Header toggleSidebar={toggleSidebar} />
-        <div className="main-layout">
-          <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-          <div className={`content-area ${sidebarOpen ? 'sidebar-open' : ''}`}>
-            <HeroCarousel />
-            <MainContent />
-          </div>
-        </div>
-        <Footer />
+        <Routes>
+          <Route 
+            path="/login" 
+            element={
+              isAuthenticated ? 
+              <Navigate to="/dashboard" replace /> : 
+              <LoginPage onLogin={handleLogin} />
+            } 
+          />
+          <Route 
+            path="/dashboard" 
+            element={
+              isAuthenticated ? 
+              <Dashboard onLogout={handleLogout} /> : 
+              <Navigate to="/login" replace />
+            } 
+          />
+          <Route 
+            path="/" 
+            element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />} 
+          />
+        </Routes>
       </div>
     </Router>
   );

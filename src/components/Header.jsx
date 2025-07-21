@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const Header = ({ toggleSidebar }) => {
+const Header = ({ toggleSidebar, onLogout }) => {
   return (
     <header className="gov-header">
       <Container fluid>
@@ -33,8 +33,14 @@ const Header = ({ toggleSidebar }) => {
             <img src="/Emblem_of_India.png" alt="Government of India" className="header-logo" />
           </Col>
           
-          <Col xs={1} className="logo-col">
-            <img src="/logo1.png" alt="Additional Logo" className="header-logo small-logo" />
+          <Col xs={1} className="user-actions">
+            <button 
+              className="logout-btn"
+              onClick={onLogout}
+              title="Logout"
+            >
+              <i className="fas fa-sign-out-alt"></i>
+            </button>
           </Col>
         </Row>
       </Container>
