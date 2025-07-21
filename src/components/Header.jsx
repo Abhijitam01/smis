@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const Header = ({ toggleSidebar, onLogout }) => {
+const Header = ({ toggleSidebar, onLogout, isAuthenticated, onOpenLogin }) => {
   return (
     <header className="gov-header">
       <Container fluid>
