@@ -34,18 +34,25 @@ const Header = ({ toggleSidebar, onLogout }) => {
           </Col>
           
           <Col xs={1} className="user-actions">
-            <button 
-              className="logout-btn"
-              onClick={onLogout}
-              title="Logout"
-            >
-              <i className="fas fa-sign-out-alt"></i>
-            </button>
-          </Col>
-        </Row>
-      </Container>
-    </header>
-  );
-};
-
-export default Header;
+            <div className="header-buttons">
+              {!isAuthenticated && (
+                <button 
+                  className="sign-in-btn"
+                  onClick={onOpenLogin}
+                  title="Sign In"
+                >
+                  <i className="fas fa-user me-1"></i>
+                  SIGN IN
+                </button>
+              )}
+              {isAuthenticated && (
+                <button 
+                  className="logout-btn"
+                  onClick={onLogout}
+                  title="Logout"
+                >
+                  <i className="fas fa-sign-out-alt me-1"></i>
+                  LOGOUT
+                </button>
+              )}
+            </div>

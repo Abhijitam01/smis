@@ -3,16 +3,18 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
+import LoginModal from './components/LoginModal';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleLogin = (credentials) => {
     // Simple authentication logic - in real app, this would call an API
-    if (credentials.username === 'admin' && credentials.password === 'password') {
+    if (credentials.username === 'admin' && credentials.password === 'password' && credentials.captcha === '2805') {
       setIsAuthenticated(true);
+      setShowLoginModal(false);
       return true;
     }
     return false;
@@ -22,31 +24,35 @@ function App() {
     setIsAuthenticated(false);
   };
 
+  const openLoginModal = () => {
+    setShowLoginModal(true);
+  };
+
+  const closeLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
   return (
     <Router>
       <div className="App">
         <Routes>
           <Route 
-            path="/login" 
-            element={
-              isAuthenticated ? 
-              <Navigate to="/dashboard" replace /> : 
-              <LoginPage onLogin={handleLogin} />
-            } 
-          />
-          <Route 
-            path="/dashboard" 
-            element={
-              isAuthenticated ? 
-              <Dashboard onLogout={handleLogout} /> : 
-              <Navigate to="/login" replace />
-            } 
-          />
-          <Route 
             path="/" 
-            element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />} 
+            element={
+              <Dashboard 
+                isAuthenticated={isAuthenticated}
+                onLogout={handleLogout} 
+                onOpenLogin={openLoginModal}
+              />
+            } 
           />
         </Routes>
+        
+        <LoginModal 
+          show={showLoginModal}
+          onClose={closeLoginModal}
+          onLogin={handleLogin}
+        />
       </div>
     </Router>
   );

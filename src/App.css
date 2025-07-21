@@ -192,6 +192,31 @@ body {
   transform: scale(1.05);
 }
 
+.sign-in-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sign-in-btn:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .small-logo {
   height: 45px;
 }
@@ -810,6 +835,114 @@ body {
   color: #95a5a6;
   font-size: 14px;
   margin: 0;
+}
+
+/* ===== LOGIN MODAL STYLES ===== */
+.login-modal .modal-dialog {
+  max-width: 450px;
+}
+
+.login-modal-header {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-modal-header span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.login-modal-input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.login-modal-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.input-group-text {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  color: #6c757d;
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.captcha-display {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  gap: 10px;
+}
+
+.captcha-text {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  letter-spacing: 2px;
+  text-decoration: line-through;
+  text-decoration-color: #e74c3c;
+}
+
+.captcha-refresh {
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.captcha-refresh:hover {
+  color: #2980b9;
+}
+
+.login-modal-btn {
+  background: #28a745;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.login-modal-btn:hover {
+  background: #218838;
+}
+
+.login-modal-btn:disabled {
+  background: #6c757d;
+}
+
+.forgot-password-link {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
