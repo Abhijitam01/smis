@@ -56,3 +56,11 @@ const Header = ({ toggleSidebar, onLogout }) => {
                 </button>
               )}
             </div>
+          </Col>
+        </Row>
+      </Container>
+    </header>
+  );
+};
+
+export default Header;
