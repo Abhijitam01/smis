@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+const Sidebar = ({ isOpen, toggleSidebar, isAuthenticated, onOpenLogin, onLogout }) => {
   const menuItems = [
     {
       title: 'Dashboard',
@@ -86,6 +86,27 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             </li>
           ))}
         </ul>
+        
+        {/* Login/Logout Section */}
+        <div className="sidebar-auth">
+          {!isAuthenticated ? (
+            <button 
+              className="sidebar-login-btn"
+              onClick={onOpenLogin}
+            >
+              <i className="fas fa-sign-in-alt"></i>
+              <span>Login</span>
+            </button>
+          ) : (
+            <button 
+              className="sidebar-logout-btn"
+              onClick={onLogout}
+            >
+              <i className="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+          )}
+        </div>
       </nav>
     </>
   );

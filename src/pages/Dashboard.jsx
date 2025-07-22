@@ -21,7 +21,13 @@ const Dashboard = ({ isAuthenticated, onLogout, onOpenLogin }) => {
         isAuthenticated={isAuthenticated}
       />
       <div className="main-layout">
-        <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+        <Sidebar 
+          isOpen={sidebarOpen} 
+          toggleSidebar={toggleSidebar}
+          isAuthenticated={isAuthenticated}
+          onOpenLogin={onOpenLogin}
+          onLogout={onLogout}
+        />
         <div className={`content-area ${sidebarOpen ? 'sidebar-open' : ''}`}>
           <HeroCarousel />
           <MainContent />
